@@ -5,6 +5,18 @@ export default class InputField extends Component {
     name: ""
   };
 
+  handleChange = event => {
+    const name = event.target.value;
+    this.setState({ name });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const { name } = this.state;
+    this.props.getData(name);
+    this.setState({ name: "" });
+  };
+
   render() {
     return (
       <div className="container">
@@ -13,9 +25,10 @@ export default class InputField extends Component {
             <form onSubmit={this.handleSubmit}>
               <div>
                 <input
-                  placeholder="Enter name here"
+                  placeholder={`Enter ${this.props.category} name here`}
                   type="text"
                   class="validate"
+                  value={this.state.name}
                   onChange={this.handleChange}
                 />
               </div>

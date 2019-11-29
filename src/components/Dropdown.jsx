@@ -8,14 +8,19 @@ export default function Dropdown({ setCategory }) {
   };
 
   return (
-    <div class="input-field col s12">
-      <label>
-        Search for Character or Creator?
-        <select className="browser-default" onChange={handleChange}>
-          <option value="charcter">Character</option>
-          <option value="creator">Creator</option>
-        </select>
-      </label>
+    <div className="container">
+      <div className="row">
+        <section class="input-field col s4 offset-s4">
+          <label>
+            Search for Character or Creator?
+            <select className="browser-default" onChange={handleChange}>
+              <option value="Choose">Please choose</option>
+              <option value="character">Character</option>
+              <option value="creator">Creator</option>
+            </select>
+          </label>
+        </section>
+      </div>
     </div>
   );
 }

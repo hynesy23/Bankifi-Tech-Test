@@ -10,18 +10,22 @@ export default class Main extends Component {
     dropdownVisible: true
   };
 
-  getData = () => {};
+  getData = name => {
+    console.log(name, "name from getData");
+  };
 
   setCategory = category => {
     this.setState({ category, dropdownVisible: false });
   };
 
   render() {
-    const { dropdownVisible } = this.state;
+    const { dropdownVisible, category } = this.state;
     return (
       <>
         {dropdownVisible && <Dropdown setCategory={this.setCategory} />}
-        {!dropdownVisible && <InputField />}
+        {!dropdownVisible && (
+          <InputField getData={this.getData} category={category} />
+        )}
       </>
     );
   }
