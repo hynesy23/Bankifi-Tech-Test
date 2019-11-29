@@ -7,6 +7,6 @@ export default class SingleResult extends Component {
 
   render() {
     const { category } = this.props;
-    return <h1>{category}</h1>;
+    return <h1>{category} Heyyy</h1>;
   }
 }
