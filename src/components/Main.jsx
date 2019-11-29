@@ -15,7 +15,7 @@ export default class Main extends Component {
   };
 
   getData = name => {
-    console.log(name, "name from getData");
+    console.log(name, "searchedEntry from getData");
     const { category } = this.state;
     api.fecthData(category, name).then(results => {
       console.log(results);
