@@ -1,7 +1,7 @@
 import React from "react";
 import ResultCard from "./ResultCard";
 
-export default function ResultsList({ results, searchEntry }) {
+export default function ResultsList({ results, searchEntry, category }) {
   return (
     <div className="container">
       <div className="row">
@@ -11,7 +11,11 @@ export default function ResultsList({ results, searchEntry }) {
           {results.map(result => {
             return (
               <>
-                <ResultCard result={result} key={result.name} />
+                <ResultCard
+                  result={result}
+                  category={category}
+                  key={result.name}
+                />
               </>
             );
           })}

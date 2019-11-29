@@ -33,6 +33,7 @@ export default class Main extends Component {
 
   setCategory = category => {
     this.setState({ category, dropdownVisible: false });
+    this.props.getCategory(category);
   };
 
   render() {
@@ -56,7 +57,13 @@ export default class Main extends Component {
             Steve Ditko!
           </p>
         )}
-        {results && <ResultsList results={results} searchEntry={searchEntry} />}
+        {results && (
+          <ResultsList
+            results={results}
+            searchEntry={searchEntry}
+            category={category}
+          />
+        )}
       </>
     );
   }

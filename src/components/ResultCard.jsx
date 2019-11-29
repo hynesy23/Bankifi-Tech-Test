@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "@reach/router";
 
-export default function ResultCard({ result }) {
+export default function ResultCard({ result, category }) {
   return (
     <div className="col s12 m6 l3">
       <div className="card">
@@ -10,7 +11,7 @@ export default function ResultCard({ result }) {
             alt=""
           />
           {/* <span>{result.name}</span> */}
-          <Link>{result.name}</Link>
+          <Link to={`/${category}/${result.name}`}>{result.name}</Link>
         </div>
       </div>
     </div>
