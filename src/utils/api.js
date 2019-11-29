@@ -18,10 +18,7 @@ export const fecthData = (category, name) => {
           data: { results }
         }
       }) => {
-        //console.log(results);
-        const [result] = results;
-        console.log(result);
-        //return results;
+        return results;
       }
     )
     .catch(console.log);

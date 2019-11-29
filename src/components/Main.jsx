@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import InputField from "./InputField";
 import Dropdown from "./Dropdown";
+import ResultsList from "./ResultsList";
 
 export default class Main extends Component {
   state = {
-    data: [],
+    results: [],
     singleEntry: null,
     category: "",
     dropdownVisible: true,
@@ -15,17 +16,16 @@ export default class Main extends Component {
   getData = name => {
     console.log(name, "name from getData");
     const { category } = this.state;
-    api.fecthData(category, name).then(result => {
-      console.log(result);
-      //   if (!result.length) {
-      //     this.setState({ notValid: true });
-      //   } else {
-      //     this.setState({
-      //       characters: result,
-      //       notValid: false,
-      //       isLoading: false
-      //     });
-      //   }
+    api.fecthData(category, name).then(results => {
+      console.log(results);
+      if (!results.length) {
+        this.setState({ notValid: true });
+      } else {
+        this.setState({
+          results,
+          notValid: false
+        });
+      }
     });
   };
 
@@ -34,7 +34,7 @@ export default class Main extends Component {
   };
 
   render() {
-    const { dropdownVisible, category, notValid } = this.state;
+    const { dropdownVisible, category, notValid, results } = this.state;
     return (
       <>
         {dropdownVisible && <Dropdown setCategory={this.setCategory} />}
@@ -44,9 +44,11 @@ export default class Main extends Component {
         {notValid && (
           <p className="invalid">
             This is not a valid entry, true believer! <br /> Your search should
-            use full name, like "Spider-man" or "Peter Parker"
+            use full name, like "Spider-man", or "Peter Parker", or the great
+            Steve Ditko!
           </p>
         )}
+        <ResultsList results={results} />
       </>
     );
   }
