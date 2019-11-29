@@ -15,8 +15,8 @@ export default function Dropdown({ setCategory }) {
             Search for Character or Creator?
             <select className="browser-default" onChange={handleChange}>
               <option value="Choose">Please choose</option>
-              <option value="character">Character</option>
-              <option value="creator">Creator</option>
+              <option value="characters">Character</option>
+              <option value="creators">Creator</option>
             </select>
           </label>
         </section>

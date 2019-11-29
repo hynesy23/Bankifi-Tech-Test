@@ -7,8 +7,22 @@ const apiKey =
 
 const ts = "12345";
 
-export const getData = (category, name) => {
-  return axios.get(
-    `${base}/${category}?nameStartsWith=${name}&limit=20&ts=${ts}&apikey=${apiKey}`
-  );
+export const fecthData = (category, name) => {
+  return axios
+    .get(
+      `${base}/${category}?nameStartsWith=${name}&limit=20&ts=${ts}&apikey=${apiKey}`
+    )
+    .then(
+      ({
+        data: {
+          data: { results }
+        }
+      }) => {
+        //console.log(results);
+        const [result] = results;
+        console.log(result);
+        //return results;
+      }
+    )
+    .catch(console.log);
 };
