@@ -1,15 +1,28 @@
 import React, { Component } from "react";
 import InputField from "./InputField";
+import Dropdown from "./Dropdown";
 
 export default class Main extends Component {
   state = {
-    characters: [],
-    character: null
+    data: [],
+    singleEntry: null,
+    category: "",
+    dropdownVisible: true
   };
 
   getData = () => {};
 
+  setCategory = category => {
+    this.setState({ category, dropdownVisible: false });
+  };
+
   render() {
-    return <InputField />;
+    const { dropdownVisible } = this.state;
+    return (
+      <>
+        {dropdownVisible && <Dropdown setCategory={this.setCategory} />}
+        {!dropdownVisible && <InputField />}
+      </>
+    );
   }
 }
