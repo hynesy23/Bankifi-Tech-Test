@@ -9,6 +9,7 @@ export default class Main extends Component {
     results: [],
     singleEntry: null,
     category: "",
+    searchEntry: "",
     dropdownVisible: true,
     notValid: false
   };
@@ -23,7 +24,8 @@ export default class Main extends Component {
       } else {
         this.setState({
           results,
-          notValid: false
+          notValid: false,
+          searchEntry: name
         });
       }
     });
@@ -34,7 +36,13 @@ export default class Main extends Component {
   };
 
   render() {
-    const { dropdownVisible, category, notValid, results } = this.state;
+    const {
+      dropdownVisible,
+      category,
+      notValid,
+      results,
+      searchEntry
+    } = this.state;
     return (
       <>
         {dropdownVisible && <Dropdown setCategory={this.setCategory} />}
@@ -48,7 +56,7 @@ export default class Main extends Component {
             Steve Ditko!
           </p>
         )}
-        <ResultsList results={results} />
+        {results && <ResultsList results={results} searchEntry={searchEntry} />}
       </>
     );
   }

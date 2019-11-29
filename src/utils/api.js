@@ -1,4 +1,5 @@
 import axios from "axios";
+import * as helper from "./helpers";
 
 const base = "http://gateway.marvel.com/v1/public";
 
@@ -18,6 +19,10 @@ export const fecthData = (category, name) => {
           data: { results }
         }
       }) => {
+        if (category === "creators") {
+          const formattedResults = helper.formatCreatorResults(results);
+          return formattedResults;
+        }
         return results;
       }
     )

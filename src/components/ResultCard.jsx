@@ -8,7 +8,7 @@ export default function ResultCard({ result }) {
     //   </div>
     // </div>
     <>
-      <img src={result.thumbnail.path} alt="" />
+      <img src={`${result.thumbnail.path}/landscape_incredible.jpg`} alt="" />
       <p>{result.name}</p>
     </>
   );
