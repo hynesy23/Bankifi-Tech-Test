@@ -4,7 +4,7 @@ import { navigate } from "@reach/router";
 
 export default function BackButton() {
   const setRoute = () => {
-    navigate("/main");
+    navigate("/");
   };
 
   return <button onClick={setRoute}>Back to Main Page</button>;

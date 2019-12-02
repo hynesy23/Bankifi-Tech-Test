@@ -4,6 +4,7 @@ import InputField from "./InputField";
 import Dropdown from "./Dropdown";
 import ResultsList from "./ResultsList";
 import Pagination from "./Pagination";
+import BackButton from "./BackButton";
 
 export default class Main extends Component {
   state = {
@@ -87,6 +88,7 @@ export default class Main extends Component {
             currentPage={currentPage}
             handlePageClick={this.handlePageClick}
           />
+          <BackButton />
         </>
       );
     }
@@ -110,6 +112,7 @@ export default class Main extends Component {
             category={category}
           />
         )}
+        <BackButton />
       </>
     );
   }
