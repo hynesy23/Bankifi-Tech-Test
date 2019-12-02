@@ -11,7 +11,7 @@ const ts = "12345";
 export const fecthResults = (category, name) => {
   return axios
     .get(
-      `${base}/${category}?nameStartsWith=${name}&limit=20&ts=${ts}&apikey=${apiKey}`
+      `${base}/${category}?nameStartsWith=${name}&limit=100&ts=${ts}&apikey=${apiKey}`
     )
     .then(
       ({

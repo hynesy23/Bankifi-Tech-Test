@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import image from "../marvel-image.jpeg";
 import CharacterResultsTable from "./CharacterResultsTable";
+import CreatorResultsTable from "./CreatorResultsTable";
 
 export default class SingleResult extends Component {
   state = {
@@ -79,7 +79,13 @@ export default class SingleResult extends Component {
       //     </table>
       //   )}
       // </>
-      <CharacterResultsTable result={result} />
+      <>
+        {category === "characters" ? (
+          <CharacterResultsTable result={result} />
+        ) : (
+          <CreatorResultsTable result={result} />
+        )}
+      </>
     );
   }
 }
