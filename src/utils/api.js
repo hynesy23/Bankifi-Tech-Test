@@ -43,8 +43,6 @@ export const fetchCharacterResult = (category, name) => {
         const formattedResult = helper.formatResultImageAndDescription(result);
         console.log(formattedResult, "formatted result");
         return formattedResult;
-        // const formattedResult = helper.formatResult(result);
-        //return formattedResult;
       }
     )
     .catch(console.log);
@@ -62,10 +60,6 @@ export const fetchCreatorResult = (category, name) => {
         const [result] = results;
         console.log(result, "result log");
         const formattedResult = helper.formatResultImageAndDescription(result);
-        // const finalResult = helper.formatCreatorResults(formattedResult);
-        // console.log(finalResult, "final creator esult");
-        // return finalResult;
-        // const formattedResult = helper.formatResult(result);
         return formattedResult;
       }
     )

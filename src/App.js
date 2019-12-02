@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Router } from "@reach/router";
+import { Router, navigate } from "@reach/router";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import SingleResult from "./components/SingleResult";
+import ContinueButton from "./components/ContinueButton";
 
 class App extends Component {
   state = {
-    category: ""
+    category: "",
+    shouldContinue: true
+  };
+
+  setContinue = () => {
+    navigate("/main");
+    this.setState({ shouldContinue: false });
   };
 
   getCategory = category => {
@@ -16,12 +23,13 @@ class App extends Component {
   };
 
   render() {
-    const { category } = this.state;
+    const { category, shouldContinue } = this.state;
     return (
       <div className="App">
         <Header />
         <Router>
-          <Main path="/" getCategory={this.getCategory} />
+          <ContinueButton path="/" setContinue={this.setContinue} />
+          <Main path="/main" getCategory={this.getCategory} />
           <SingleResult path="/characters/:name" category={category} />
           <SingleResult path="/creators/:name" category={category} />
         </Router>

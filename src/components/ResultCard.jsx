@@ -9,7 +9,7 @@ export default function ResultCard({ result, category }) {
           <img
             src={`${result.thumbnail.path}/landscape_incredible.jpg`}
             alt=""
-            style={{ width: "100%", height: 250 }}
+            style={{ width: "100%", height: 200 }}
           />
           <div className="card-content">
             <Link to={`/${category}/${result.name}`}>{result.name}</Link>

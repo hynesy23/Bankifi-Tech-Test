@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import ReactPaginate from "react-paginate";
 import InputField from "./InputField";
 import Dropdown from "./Dropdown";
 import ResultsList from "./ResultsList";
+import Pagination from "./Pagination";
 
 export default class Main extends Component {
   state = {
@@ -74,32 +74,19 @@ export default class Main extends Component {
       elements
     } = this.state;
 
-    let paginationElement;
     if (pageCount > 1) {
-      paginationElement = (
-        <ReactPaginate
-          previousLabel={"← Previous"}
-          nextLabel={"Next →"}
-          breakLabel={<span className="gap">...</span>}
-          pageCount={pageCount}
-          onPageChange={this.handlePageClick}
-          forcePage={currentPage}
-          containerClassName={"pagination"}
-          previousLinkClassName={"previous_page"}
-          nextLinkClassName={"next_page"}
-          disabledClassName={"disabled"}
-          activeClassName={"active"}
-        />
-      );
       return (
         <>
-          {paginationElement}
           <ResultsList
             results={elements}
             searchEntry={searchEntry}
             category={category}
           />
-          {paginationElement}
+          <Pagination
+            pageCount={pageCount}
+            currentPage={currentPage}
+            handlePageClick={this.handlePageClick}
+          />
         </>
       );
     }
