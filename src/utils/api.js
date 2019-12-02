@@ -62,9 +62,11 @@ export const fetchCreatorResult = (category, name) => {
         const [result] = results;
         console.log(result, "result log");
         const formattedResult = helper.formatResultImageAndDescription(result);
-        return formattedResult;
+        // const finalResult = helper.formatCreatorResults(formattedResult);
+        // console.log(finalResult, "final creator esult");
+        // return finalResult;
         // const formattedResult = helper.formatResult(result);
-        //return formattedResult;
+        return formattedResult;
       }
     )
     .catch(console.log);
