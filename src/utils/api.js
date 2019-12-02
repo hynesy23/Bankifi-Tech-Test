@@ -8,7 +8,7 @@ const apiKey =
 
 const ts = "12345";
 
-export const fecthData = (category, name) => {
+export const fecthResults = (category, name) => {
   return axios
     .get(
       `${base}/${category}?nameStartsWith=${name}&limit=20&ts=${ts}&apikey=${apiKey}`
@@ -24,6 +24,47 @@ export const fecthData = (category, name) => {
           return formattedResults;
         }
         return results;
+      }
+    )
+    .catch(console.log);
+};
+
+export const fetchCharacterResult = (category, name) => {
+  return axios
+    .get(`${base}/${category}?name=${name}&ts=${ts}&apikey=${apiKey}`)
+    .then(
+      ({
+        data: {
+          data: { results }
+        }
+      }) => {
+        const [result] = results;
+        console.log(result, "result log");
+        const formattedResult = helper.formatResultImageAndDescription(result);
+        console.log(formattedResult, "formatted result");
+        return formattedResult;
+        // const formattedResult = helper.formatResult(result);
+        //return formattedResult;
+      }
+    )
+    .catch(console.log);
+};
+
+export const fetchCreatorResult = (category, name) => {
+  return axios
+    .get(`${base}/${category}?nameStartsWith=${name}&ts=${ts}&apikey=${apiKey}`)
+    .then(
+      ({
+        data: {
+          data: { results }
+        }
+      }) => {
+        const [result] = results;
+        console.log(result, "result log");
+        const formattedResult = helper.formatResultImageAndDescription(result);
+        return formattedResult;
+        // const formattedResult = helper.formatResult(result);
+        //return formattedResult;
       }
     )
     .catch(console.log);

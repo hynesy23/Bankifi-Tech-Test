@@ -5,3 +5,9 @@
 .invalid {
   color: red;
 }
+
+.gen_image {
+  height: 450px;
+  width: 450px;
+  padding-top: 10px;
+}

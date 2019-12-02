@@ -14,10 +14,9 @@ export default class Main extends Component {
     notValid: false
   };
 
-  getData = name => {
-    console.log(name, "searchedEntry from getData");
+  getResults = name => {
     const { category } = this.state;
-    api.fecthData(category, name).then(results => {
+    api.fecthResults(category, name).then(results => {
       console.log(results);
       if (!results.length) {
         this.setState({ notValid: true });
@@ -48,7 +47,7 @@ export default class Main extends Component {
       <>
         {dropdownVisible && <Dropdown setCategory={this.setCategory} />}
         {!dropdownVisible && (
-          <InputField getData={this.getData} category={category} />
+          <InputField getResults={this.getResults} category={category} />
         )}
         {notValid && (
           <p className="invalid">

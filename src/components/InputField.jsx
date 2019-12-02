@@ -13,7 +13,7 @@ export default class InputField extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { name } = this.state;
-    this.props.getData(name);
+    this.props.getResults(name);
     this.setState({ name: "" });
   };
 

@@ -11,6 +11,7 @@ class App extends Component {
   };
 
   getCategory = category => {
+    console.log(category);
     this.setState({ category });
   };
 

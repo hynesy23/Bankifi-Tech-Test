@@ -6,3 +6,17 @@ export const formatCreatorResults = results => {
     return result;
   });
 };
+
+export const formatResultImageAndDescription = result => {
+  const notAvailable = "image_not_available";
+
+  if (result.thumbnail.path.includes(notAvailable)) {
+    result.thumbnail.path = "";
+  }
+
+  if (!result.description) {
+    result.description = `No bio available (I know! ${result.name} doesn't have a bio! crazy, right? )`;
+  }
+
+  return result;
+};

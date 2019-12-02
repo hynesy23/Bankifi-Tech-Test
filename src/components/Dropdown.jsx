@@ -3,7 +3,6 @@ import React from "react";
 export default function Dropdown({ setCategory }) {
   const handleChange = event => {
     const category = event.target.value;
-    console.log(category);
     setCategory(category);
   };
 
