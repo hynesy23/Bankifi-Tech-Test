@@ -22,14 +22,21 @@ export default function CharacterResultsTable({ result }) {
         <table>
           <tr>
             <td>{result.name.toUpperCase()}'S BIOGRAPHY: </td>
-            <td>{result.description}</td>
+            {result.description ? (
+              <td>{result.description}</td>
+            ) : (
+              <td>
+                No bio available (I know! {result.name} doesn't have a bio!
+                crazy, right?)
+              </td>
+            )}
           </tr>
           <tr>
             <td>Popular Comics {result.name} has Appeared in:</td>
             <td>
               {result &&
                 result.comics.items.map(item => {
-                  return <p>{item.name}</p>;
+                  return <p key={item.id}>{item.name}</p>;
                 })}
             </td>
           </tr>
@@ -37,7 +44,7 @@ export default function CharacterResultsTable({ result }) {
             <td>Popular Events {result.name} has appeared in:</td>
             <td>
               {result.events.items.map(item => {
-                return <p>{item.name}</p>;
+                return <p key={item.id}>{item.name}</p>;
               })}
             </td>
           </tr>
@@ -45,7 +52,7 @@ export default function CharacterResultsTable({ result }) {
             <td>Popular Stories {result.name} has appareared in:</td>
             <td>
               {result.stories.items.map(item => {
-                return <p>{item.name}</p>;
+                return <p key={item.id}>{item.name}</p>;
               })}
             </td>
           </tr>

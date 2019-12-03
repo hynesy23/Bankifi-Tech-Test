@@ -14,7 +14,7 @@ export default function ResultsList({ results, searchEntry, category }) {
                 <ResultCard
                   result={result}
                   category={category}
-                  key={result.name}
+                  key={result.id}
                 />
               </>
             );

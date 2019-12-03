@@ -14,9 +14,9 @@ export const formatResultImageAndDescription = result => {
     result.thumbnail.path = "";
   }
 
-  if (!result.description) {
-    result.description = `No bio available (I know! ${result.name} doesn't have a bio! crazy, right? )`;
-  }
+  // if (!result.description) {
+  //   result.description = `No bio available (I know! ${result.name} doesn't have a bio! crazy, right? )`;
+  // }
 
   return result;
 };

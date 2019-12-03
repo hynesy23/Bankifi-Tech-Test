@@ -30,8 +30,8 @@ class App extends Component {
         <Router>
           <ContinueButton path="/" setContinue={this.setContinue} />
           <Main path="/main" getCategory={this.getCategory} />
-          <SingleResult path="/characters/:name" category={category} />
-          <SingleResult path="/creators/:name" category={category} />
+          <SingleResult path="/:category/:name" category={category} />
+          <SingleResult path="/:category/:name" category={category} />
         </Router>
       </div>
     );

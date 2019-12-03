@@ -78,6 +78,9 @@ export default class Main extends Component {
     if (pageCount > 1) {
       return (
         <>
+          {!dropdownVisible && (
+            <InputField getResults={this.getResults} category={category} />
+          )}
           <ResultsList
             results={elements}
             searchEntry={searchEntry}
