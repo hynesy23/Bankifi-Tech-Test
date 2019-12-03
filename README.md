@@ -1,68 +1,89 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Bankifi Tech Test
 
-## Available Scripts
+This is a single page application builti with Reactjs. It is a search engine app, which makes RESTful GET requests to the Marvel Developer API https://developer.marvel.com/. You can search for either characters or creators. Requests are paginated and display is reponsive.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+The instructions below will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+To run this locally you will need Node.js and git installated on your system.
 
-### `npm test`
+First check if you have node.js installed with below command:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+node -v
+```
 
-### `npm run build`
+If you do not have Node.js installed or command above does not work please follow the instructions on this guide: https://nodejs.org/en/download/package-manager/
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Finally, check if git is installed on your machine enter the following command on your terminal:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```bash
+git --version
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If you do not have git installed on your machine please follow this guide.
 
-### `npm run eject`
+### Installation/Running local version
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Now that the prerequisites have been installed you can now install and run this application.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+First you will need to clone this repo, to do so use the command line to navigate to your preferred directory on your local machine and enter the following command on the terminal:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+git clone https://github.com/hynesy23/bankifi-test.git
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Navigate inside the folder and install all dependencies by entering the following commands on your terminal window:
 
-## Learn More
+```bash
+cd bankifi-test
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Finally to run the webapp enter the following command in your terminal window:
 
-### Code Splitting
+```
+npm start
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+This will run the server on port 3000 and open the webpage in your browser or you can navigate to http://localhost:3000 in your browser manually.
 
-### Analyzing the Bundle Size
+Should you wish to run tests, stop the app from running, and enter the following command:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```
+npm test
+```
 
-### Making a Progressive Web App
+### Using the site
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+On loading the web app you are greeted with a short welcome message, and asked to press Continue to move on. Next, you are asked to select if you would like to search for creators or characters.
 
-### Advanced Configuration
+After this, you are presented with a search field where you can type a name to search for. Should the search bring back more than 20 results, you are able to click to the next page of results using buttons at the bottom of the page.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Should you wish to return to the Welcome page at any time, there is a Return button on the bottom of each page.
 
-### Deployment
+### Built with
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+- Runtime environment: Node.js
+- React bootstrap: Create React App
+- HTTP client: axios
+- React Routing: reach/router
+- Majority of styling: Materialize CSS
 
-### `npm run build` fails to minify
+## Author
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Cillian Hynes
+
+## Contributing
+
+This project is a portfolio piece and is not accepting contributions.
+
+## Acknowledgments
+
+This website was created as part of a technical test for Bankifi. All content is part of Marvel Comics
+
+https://developer.marvel.com/
