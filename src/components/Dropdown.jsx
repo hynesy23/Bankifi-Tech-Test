@@ -1,9 +1,11 @@
 import React from "react";
+import { navigate } from "@reach/router";
 
-export default function Dropdown({ setCategory }) {
+export default function Dropdown({ getCategory }) {
   const handleChange = event => {
     const category = event.target.value;
-    setCategory(category);
+    getCategory(category);
+    navigate("/main");
   };
 
   return (

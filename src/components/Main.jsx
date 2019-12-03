@@ -22,7 +22,9 @@ export default class Main extends Component {
   };
 
   getResults = name => {
-    const { category } = this.state;
+    const { category } = this.props;
+    console.log(category, "CATEGORY FROM MAIN");
+    console.log(name, "NAME");
     api.fecthResults(category, name).then(results => {
       console.log(results);
       if (!results.length) {
@@ -66,7 +68,6 @@ export default class Main extends Component {
   render() {
     const {
       dropdownVisible,
-      category,
       notValid,
       results,
       searchEntry,
@@ -74,13 +75,14 @@ export default class Main extends Component {
       currentPage,
       elements
     } = this.state;
+    const { category } = this.props;
 
     if (pageCount > 1) {
       return (
         <>
-          {!dropdownVisible && (
-            <InputField getResults={this.getResults} category={category} />
-          )}
+          {/* {!dropdownVisible && ( */}
+          <InputField getResults={this.getResults} category={category} />
+          // )}
           <ResultsList
             results={elements}
             searchEntry={searchEntry}
@@ -97,10 +99,10 @@ export default class Main extends Component {
     }
     return (
       <>
-        {dropdownVisible && <Dropdown setCategory={this.setCategory} />}
-        {!dropdownVisible && (
-          <InputField getResults={this.getResults} category={category} />
-        )}
+        {/* {dropdownVisible && <Dropdown setCategory={this.setCategory} />} */}
+        {/* {!dropdownVisible && ( */}
+        <InputField getResults={this.getResults} category={category} />
+        {/* )} */}
         {notValid && (
           <p className="invalid">
             This is not a valid entry, true believer! <br /> Your search should
