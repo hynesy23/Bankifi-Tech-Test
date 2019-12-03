@@ -4,7 +4,6 @@ import InputField from "./InputField";
 import ResultsList from "./ResultsList";
 import Pagination from "./Pagination";
 import BackButton from "./BackButton";
-import { stringify } from "querystring";
 
 export default class Main extends Component {
   state = {
