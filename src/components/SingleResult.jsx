@@ -10,7 +10,6 @@ export default class SingleResult extends Component {
   };
 
   componentDidMount() {
-    console.log("MOUNTING");
     let { name, category } = this.props;
     if (!category) return null;
     if (category === "characters") {

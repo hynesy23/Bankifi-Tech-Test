@@ -10,8 +10,6 @@ export const formatCreatorResults = results => {
 export const formatResultImage = result => {
   const notAvailable = "image_not_available";
 
-  console.log(result, "RESULT LOG");
-
   if (!Object.keys(result).length) {
     return result;
   }

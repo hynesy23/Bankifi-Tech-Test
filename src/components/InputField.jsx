@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "@reach/router";
 
 export default class InputField extends Component {
   state = {
@@ -34,6 +35,10 @@ export default class InputField extends Component {
               </div>
               <button>Search</button>
             </form>
+            <p>
+              Or, go back to your{" "}
+              <Link to="/choose_category">category selection</Link>
+            </p>
           </section>
         </div>
       </div>

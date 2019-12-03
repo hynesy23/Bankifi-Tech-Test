@@ -1,5 +1,4 @@
 import React from "react";
-// import { browserHistory } from "react-router";
 import { navigate } from "@reach/router";
 
 export default function BackButton() {
@@ -7,5 +6,5 @@ export default function BackButton() {
     navigate("/");
   };
 
-  return <button onClick={setRoute}>Back to Main Page</button>;
+  return <button onClick={setRoute}>Back to Welcome Page</button>;
 }

@@ -16,12 +16,17 @@ class App extends Component {
 
   setContinue = () => {
     navigate("/choose_category");
-    this.setState({ shouldContinue: false });
   };
 
   getCategory = category => {
-    console.log(category, "CATEGORY FROM APP");
-    this.setState({ category });
+    this.setState({ category }, () => {
+      this.saveData(category);
+    });
+  };
+
+  saveData = () => {
+    const { category } = this.props;
+    localStorage.setItem("category", JSON.stringify(category));
   };
 
   render() {

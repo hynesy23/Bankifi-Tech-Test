@@ -5,7 +5,11 @@ export default function CharacterResultsTable({ result }) {
   return (
     <>
       {result && result.thumbnail.path ? (
-        <img src={`${result.thumbnail.path}/landscape_incredible.jpg`} alt="" />
+        <img
+          src={`${result.thumbnail.path}/landscape_incredible.jpg`}
+          alt=""
+          className="gen_image"
+        />
       ) : (
         <>
           {result && (

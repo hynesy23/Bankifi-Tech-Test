@@ -39,9 +39,7 @@ export const fetchCharacterResult = (category, name) => {
         }
       }) => {
         const [result] = results;
-        console.log(result, "result log");
         const formattedResult = helper.formatResultImage(result);
-        console.log(formattedResult, "formatted result");
         return formattedResult;
       }
     )
@@ -58,7 +56,6 @@ export const fetchCreatorResult = (category, name) => {
         }
       }) => {
         const [result] = results;
-        console.log(result, "result log");
         const formattedResult = helper.formatResultImage(result);
         return formattedResult;
       }

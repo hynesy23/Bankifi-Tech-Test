@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import InputField from "./InputField";
-import Dropdown from "./Dropdown";
 import ResultsList from "./ResultsList";
 import Pagination from "./Pagination";
 import BackButton from "./BackButton";
+import { stringify } from "querystring";
 
 export default class Main extends Component {
   state = {
@@ -23,16 +23,14 @@ export default class Main extends Component {
 
   getResults = name => {
     const { category } = this.props;
-    console.log(category, "CATEGORY FROM MAIN");
-    console.log(name, "NAME");
     api.fecthResults(category, name).then(results => {
-      console.log(results);
       if (!results.length) {
         this.setState({ notValid: true });
       } else {
         this.setState(
           {
             results,
+            category,
             notValid: false,
             searchEntry: name,
             pageCount: Math.ceil(results.length / this.state.perPage)
@@ -45,9 +43,7 @@ export default class Main extends Component {
 
   setElementsForCurrentPage = () => {
     const { perPage, offset, results } = this.state;
-    console.log(results, "RESULTS LOG");
     const elements = results.slice(offset, offset + perPage);
-    console.log(elements, "ELEMENTS LOG");
     this.setState({ elements });
   };
 
@@ -60,14 +56,8 @@ export default class Main extends Component {
     );
   };
 
-  setCategory = category => {
-    this.setState({ category, dropdownVisible: false });
-    this.props.getCategory(category);
-  };
-
   render() {
     const {
-      dropdownVisible,
       notValid,
       results,
       searchEntry,
@@ -80,9 +70,7 @@ export default class Main extends Component {
     if (pageCount > 1) {
       return (
         <>
-          {/* {!dropdownVisible && ( */}
           <InputField getResults={this.getResults} category={category} />
-          // )}
           <ResultsList
             results={elements}
             searchEntry={searchEntry}
@@ -99,10 +87,7 @@ export default class Main extends Component {
     }
     return (
       <>
-        {/* {dropdownVisible && <Dropdown setCategory={this.setCategory} />} */}
-        {/* {!dropdownVisible && ( */}
         <InputField getResults={this.getResults} category={category} />
-        {/* )} */}
         {notValid && (
           <p className="invalid">
             This is not a valid entry, true believer! <br /> Your search should

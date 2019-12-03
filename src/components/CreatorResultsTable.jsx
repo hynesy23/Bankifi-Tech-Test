@@ -5,7 +5,11 @@ export default function CreatorResultsTable({ result }) {
   return (
     <>
       {result && result.thumbnail.path ? (
-        <img src={`${result.thumbnail.path}/landscape_incredible.jpg`} alt="" />
+        <img
+          src={`${result.thumbnail.path}/landscape_incredible.jpg`}
+          alt="marvel_image"
+          className="gen_image"
+        />
       ) : (
         <>
           {result && (
