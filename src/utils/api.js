@@ -1,10 +1,8 @@
 import axios from "axios";
 import * as helper from "./helpers";
+import apiKey from "../key";
 
 const base = "http://gateway.marvel.com/v1/public";
-
-const apiKey =
-  "7ae2241ac3edddf2b9d6b1530043d4ce&hash=8b58dcf685ef57026067ebd8d34f45f1";
 
 const ts = "12345";
 
