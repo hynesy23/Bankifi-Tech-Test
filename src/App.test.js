@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { formatCreatorResults } from "./utils/helpers";
+import { formatCreatorResults, formatResultImage } from "./utils/helpers";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
@@ -77,6 +77,51 @@ describe("formatCreatorResults", () => {
         name: "Jack Frost"
       }
     ];
+    expect(actualResult).toEqual(expectedResult);
+  });
+});
+
+describe("formatResultImage", () => {
+  it("Returns empty object when passed empty object", () => {
+    const input = {};
+    const actualResult = formatResultImage(input);
+    const expectedResult = {};
+    expect(actualResult).toEqual(expectedResult);
+  });
+  it('If object contains key of thumbnail whoch contains key of path, and the property contains "image_not_available", will replace property with ""', () => {
+    const input = {
+      id: 203,
+      name: "Johnson",
+      thumbnail: {
+        path: "https://liverpoolfc/images/image_not_available"
+      }
+    };
+    const actualResult = formatResultImage(input);
+    const expectedResult = {
+      id: 203,
+      name: "Johnson",
+      thumbnail: {
+        path: ""
+      }
+    };
+    expect(actualResult).toEqual(expectedResult);
+  });
+  it('If object contains key of thumbnail that then has key of path, and the property does not contain "image_not_available", will change nothing', () => {
+    const input = {
+      id: 203,
+      name: "Johnson",
+      thumbnail: {
+        path: "https://liverpoolfc/images/i_am_an_image"
+      }
+    };
+    const actualResult = formatResultImage(input);
+    const expectedResult = {
+      id: 203,
+      name: "Johnson",
+      thumbnail: {
+        path: "https://liverpoolfc/images/i_am_an_image"
+      }
+    };
     expect(actualResult).toEqual(expectedResult);
   });
 });

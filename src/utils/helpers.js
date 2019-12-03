@@ -7,16 +7,19 @@ export const formatCreatorResults = results => {
   });
 };
 
-export const formatResultImageAndDescription = result => {
+export const formatResultImage = result => {
   const notAvailable = "image_not_available";
+
+  console.log(result, "RESULT LOG");
+
+  if (!Object.keys(result).length) {
+    return result;
+  }
 
   if (result.thumbnail.path.includes(notAvailable)) {
     result.thumbnail.path = "";
+    return result;
   }
-
-  // if (!result.description) {
-  //   result.description = `No bio available (I know! ${result.name} doesn't have a bio! crazy, right? )`;
-  // }
 
   return result;
 };
