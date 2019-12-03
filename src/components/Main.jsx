@@ -112,7 +112,7 @@ export default class Main extends Component {
             category={category}
           />
         )}
-        <BackButton />
+        {searchEntry && <BackButton />}
       </>
     );
   }
