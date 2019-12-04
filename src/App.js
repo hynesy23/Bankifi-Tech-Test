@@ -6,6 +6,7 @@ import Main from "./components/Main";
 import SingleResult from "./components/SingleResult";
 import ContinueButton from "./components/ContinueButton";
 import Dropdown from "./components/Dropdown";
+import Error from "../src/components/Error";
 
 class App extends Component {
   state = {
@@ -28,6 +29,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Router>
+          <Error default error={{ status: "404", msg: "Route not found" }} />
           <ContinueButton path="/" setContinue={this.setContinue} />
           <Dropdown path="/choose_category" getCategory={this.getCategory} />
           <Main

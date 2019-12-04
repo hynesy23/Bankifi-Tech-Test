@@ -5,6 +5,7 @@ import ResultsList from "./ResultsList";
 import Pagination from "./Pagination";
 import BackButton from "./BackButton";
 import Error from "./Error";
+import LoadingSymbol from "./LoadingSymbol";
 
 export default class Main extends Component {
   state = {
@@ -18,14 +19,15 @@ export default class Main extends Component {
     offset: 0,
     currentPage: 0,
     perPage: 20,
-    pageCount: 0
+    pageCount: 0,
+    isLoading: true
   };
 
   getResults = name => {
     const { category } = this.props;
     api.fecthResults(category, name).then(results => {
       if (!results.length) {
-        this.setState({ notValid: true });
+        this.setState({ notValid: true, isLoading: false });
       } else {
         this.setState(
           {
@@ -33,7 +35,8 @@ export default class Main extends Component {
             category,
             notValid: false,
             searchEntry: name,
-            pageCount: Math.ceil(results.length / this.state.perPage)
+            pageCount: Math.ceil(results.length / this.state.perPage),
+            isLoading: false
           },
           () => this.setElementsForCurrentPage()
         );
@@ -44,7 +47,7 @@ export default class Main extends Component {
   setElementsForCurrentPage = () => {
     const { perPage, offset, results } = this.state;
     const elements = results.slice(offset, offset + perPage);
-    this.setState({ elements });
+    this.setState({ elements, isLoading: false });
   };
 
   handlePageClick = data => {
@@ -63,16 +66,19 @@ export default class Main extends Component {
       searchEntry,
       pageCount,
       currentPage,
-      elements
+      elements,
+      isLoading
     } = this.state;
     const { category } = this.props;
 
     if (!category) return <Error error="category" />;
+    // if (isLoading) return <LoadingSymbol />;
 
     if (pageCount > 1) {
       return (
         <>
           <InputField getResults={this.getResults} category={category} />
+          {isLoading && <LoadingSymbol />}
           <ResultsList
             results={elements}
             searchEntry={searchEntry}
@@ -90,6 +96,8 @@ export default class Main extends Component {
     return (
       <>
         <InputField getResults={this.getResults} category={category} />
+        {/* {isLoading && <LoadingSymbol />} */}
+        {!results.length && <LoadingSymbol />}
         {notValid && <Error error={"invalid"} />}
         {results && (
           <ResultsList

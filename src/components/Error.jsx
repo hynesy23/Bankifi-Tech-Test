@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 
 export default function Error({ error }) {
+  console.log(error, "error log");
   return (
     <>
       {error === "invalid" ? (
@@ -16,6 +17,7 @@ export default function Error({ error }) {
           <Link to="/choose_category">select a category again</Link>
         </p>
       )}
+      <p>You've taken a wrong turn!</p>
     </>
   );
 }

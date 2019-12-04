@@ -1,7 +1,14 @@
 import React from "react";
 import ResultCard from "./ResultCard";
+import LoadingSymbol from "./LoadingSymbol";
 
-export default function ResultsList({ results, searchEntry, category }) {
+export default function ResultsList({
+  results,
+  searchEntry,
+  category,
+  isLoading
+}) {
+  if (isLoading) return <LoadingSymbol />;
   return (
     <div className="container">
       <div className="row">

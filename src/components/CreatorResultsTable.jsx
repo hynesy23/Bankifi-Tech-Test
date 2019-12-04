@@ -16,7 +16,7 @@ export default function CreatorResultsTable({ result }) {
             <a
               title={`No image available for ${result.fullName}. Here's a nice generic Marvel pic instead`}
             >
-              <img src={image} className="gen_image" />
+              <img src={image} className="gen_image" alt="Marvel logo" />
             </a>
           )}
         </>

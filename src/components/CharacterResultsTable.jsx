@@ -16,7 +16,7 @@ export default function CharacterResultsTable({ result }) {
             <a
               title={`No image available for ${result.name}. Here's a nice generic Marvel pic instead`}
             >
-              <img src={image} className="gen_image" />
+              <img src={image} className="gen_image" alt="Marvel logo" />
             </a>
           )}
         </>
