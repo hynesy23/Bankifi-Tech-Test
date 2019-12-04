@@ -63,12 +63,24 @@ export default class Main extends Component {
     console.log(sort_by, "sort by");
     const { results } = this.state;
     console.log(results, "RESULTS");
-    const sortedResults = results.sort((a, b) => {
-      return b[sort_by].available - a[sort_by].available;
-    });
-    this.setState({ results: sortedResults }, () =>
-      this.setElementsForCurrentPage()
-    );
+    let sortedResults;
+    if (sort_by === "name") {
+      sortedResults = results.sort((a, b) => {
+        if (a.name > b.name) return -1;
+        else if (b.name > a.name) return 1;
+        else return 0;
+      });
+      this.setState({ results: sortedResults }, () =>
+        this.setElementsForCurrentPage()
+      );
+    } else {
+      sortedResults = results.sort((a, b) => {
+        return b[sort_by].available - a[sort_by].available;
+      });
+      this.setState({ results: sortedResults }, () =>
+        this.setElementsForCurrentPage()
+      );
+    }
   };
 
   sortResultsAlphabetically = () => {};

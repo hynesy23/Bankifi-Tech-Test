@@ -31,6 +31,7 @@ export default class InputField extends Component {
                   className="validate"
                   value={this.state.name}
                   onChange={this.handleChange}
+                  required
                 />
               </div>
               <button>Search</button>

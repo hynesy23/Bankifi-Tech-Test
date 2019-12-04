@@ -14,7 +14,7 @@ export default function SortResults({ sortResults }) {
             Sort Results By:
             <select className="browser-default" onChange={getSortBy}>
               <option value="Choose">Please choose</option>
-              <option value="alphabetically">Alphabetically</option>
+              <option value="name">Alphabetically</option>
               <option value="comics">No of Comics</option>
               <option value="events">No of Events</option>
               <option value="stories">No of Stories</option>
