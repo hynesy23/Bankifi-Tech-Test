@@ -28,7 +28,7 @@ export default class InputField extends Component {
                 <input
                   placeholder={`Enter ${this.props.category} name here`}
                   type="text"
-                  class="validate"
+                  className="validate"
                   value={this.state.name}
                   onChange={this.handleChange}
                 />

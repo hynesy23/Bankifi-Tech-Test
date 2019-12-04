@@ -11,7 +11,7 @@ export default function Dropdown({ getCategory }) {
   return (
     <div className="container">
       <div className="row">
-        <section class="input-field col s4 offset-s4">
+        <section className="input-field col s4 offset-s4">
           <label>
             Search for Character or Creator?
             <select className="browser-default" onChange={handleChange}>

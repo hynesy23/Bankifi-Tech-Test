@@ -19,14 +19,7 @@ class App extends Component {
   };
 
   getCategory = category => {
-    this.setState({ category }, () => {
-      this.saveData(category);
-    });
-  };
-
-  saveData = () => {
-    const { category } = this.props;
-    localStorage.setItem("category", JSON.stringify(category));
+    this.setState({ category });
   };
 
   render() {
@@ -42,7 +35,6 @@ class App extends Component {
             getCategory={this.getCategory}
             category={category}
           />
-          <SingleResult path="/:category/:name" category={category} />
           <SingleResult path="/:category/:name" category={category} />
         </Router>
       </div>

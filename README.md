@@ -24,6 +24,8 @@ Finally, check if git is installed on your machine enter the following command o
 git --version
 ```
 
+You will also require an API key from the Marvel Developer Portal, https://developer.marvel.com/account. In order to keep it private, create a .env file at the root of your application in which to store it, and then add this file to .gitignore before making public.
+
 If you do not have git installed on your machine please follow this guide.
 
 ### Installation/Running local version

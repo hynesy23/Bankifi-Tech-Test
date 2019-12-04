@@ -1,6 +1,8 @@
 import axios from "axios";
 import * as helper from "./helpers";
-import apiKey from "../key";
+import apiKey from "../apikey";
+
+//const apiKey = process.env.REACT_APP_API_KEY;
 
 const base = "http://gateway.marvel.com/v1/public";
 

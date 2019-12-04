@@ -4,6 +4,7 @@ import InputField from "./InputField";
 import ResultsList from "./ResultsList";
 import Pagination from "./Pagination";
 import BackButton from "./BackButton";
+import Error from "./Error";
 
 export default class Main extends Component {
   state = {
@@ -66,6 +67,8 @@ export default class Main extends Component {
     } = this.state;
     const { category } = this.props;
 
+    if (!category) return <Error error="category" />;
+
     if (pageCount > 1) {
       return (
         <>
@@ -87,13 +90,7 @@ export default class Main extends Component {
     return (
       <>
         <InputField getResults={this.getResults} category={category} />
-        {notValid && (
-          <p className="invalid">
-            This is not a valid entry, true believer! <br /> Your search should
-            use full name, like "Spider-man", or "Peter Parker", or the great
-            Steve Ditko!
-          </p>
-        )}
+        {notValid && <Error error={"invalid"} />}
         {results && (
           <ResultsList
             results={results}
