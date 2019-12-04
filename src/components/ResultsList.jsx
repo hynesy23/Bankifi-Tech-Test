@@ -17,13 +17,7 @@ export default function ResultsList({
 
           {results.map(result => {
             return (
-              <>
-                <ResultCard
-                  result={result}
-                  category={category}
-                  key={result.id}
-                />
-              </>
+              <ResultCard result={result} category={category} key={result.id} />
             );
           })}
         </div>

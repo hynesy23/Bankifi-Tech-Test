@@ -11,3 +11,11 @@
   width: 500px;
   padding-top: 10px;
 }
+
+.sort_by {
+  /* display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center; */
+  padding-bottom: 50px;
+}

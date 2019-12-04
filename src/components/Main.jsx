@@ -5,13 +5,12 @@ import ResultsList from "./ResultsList";
 import Pagination from "./Pagination";
 import BackButton from "./BackButton";
 import Error from "./Error";
-import LoadingSymbol from "./LoadingSymbol";
+import SortResults from "./SortResults";
 
 export default class Main extends Component {
   state = {
     results: [],
     elements: [],
-    singleEntry: null,
     category: "",
     searchEntry: "",
     dropdownVisible: true,
@@ -20,14 +19,15 @@ export default class Main extends Component {
     currentPage: 0,
     perPage: 20,
     pageCount: 0,
-    isLoading: true
+    isLoading: true,
+    sortByVisible: false
   };
 
   getResults = name => {
     const { category } = this.props;
     api.fecthResults(category, name).then(results => {
       if (!results.length) {
-        this.setState({ notValid: true, isLoading: false });
+        this.setState({ notValid: true });
       } else {
         this.setState(
           {
@@ -36,7 +36,7 @@ export default class Main extends Component {
             notValid: false,
             searchEntry: name,
             pageCount: Math.ceil(results.length / this.state.perPage),
-            isLoading: false
+            sortByVisible: true
           },
           () => this.setElementsForCurrentPage()
         );
@@ -47,7 +47,7 @@ export default class Main extends Component {
   setElementsForCurrentPage = () => {
     const { perPage, offset, results } = this.state;
     const elements = results.slice(offset, offset + perPage);
-    this.setState({ elements, isLoading: false });
+    this.setState({ elements });
   };
 
   handlePageClick = data => {
@@ -59,6 +59,20 @@ export default class Main extends Component {
     );
   };
 
+  sortResults = sort_by => {
+    console.log(sort_by, "sort by");
+    const { results } = this.state;
+    console.log(results, "RESULTS");
+    const sortedResults = results.sort((a, b) => {
+      return b[sort_by].available - a[sort_by].available;
+    });
+    this.setState({ results: sortedResults }, () =>
+      this.setElementsForCurrentPage()
+    );
+  };
+
+  sortResultsAlphabetically = () => {};
+
   render() {
     const {
       notValid,
@@ -67,18 +81,17 @@ export default class Main extends Component {
       pageCount,
       currentPage,
       elements,
-      isLoading
+      sortByVisible
     } = this.state;
     const { category } = this.props;
 
     if (!category) return <Error error="category" />;
-    // if (isLoading) return <LoadingSymbol />;
 
     if (pageCount > 1) {
       return (
         <>
           <InputField getResults={this.getResults} category={category} />
-          {isLoading && <LoadingSymbol />}
+          {sortByVisible && <SortResults sortResults={this.sortResults} />}
           <ResultsList
             results={elements}
             searchEntry={searchEntry}
@@ -96,9 +109,8 @@ export default class Main extends Component {
     return (
       <>
         <InputField getResults={this.getResults} category={category} />
-        {/* {isLoading && <LoadingSymbol />} */}
-        {!results.length && <LoadingSymbol />}
         {notValid && <Error error={"invalid"} />}
+        {sortByVisible && <SortResults sortResults={this.sortResults} />}
         {results && (
           <ResultsList
             results={results}
