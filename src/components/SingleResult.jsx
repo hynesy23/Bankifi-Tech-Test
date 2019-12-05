@@ -15,8 +15,12 @@ export default class SingleResult extends Component {
   componentDidMount() {
     let { name, category } = this.props;
     api
-      .fetchCharacterResult(category, name)
+      .fetchSingleResult(category, name)
       .then(result => {
+        if (!result) {
+          this.setState({ err: true });
+        }
+        console.log(result, "RESULT FROM SINGLERESULT");
         this.setState({
           result,
           currentCategory: category,
@@ -24,6 +28,7 @@ export default class SingleResult extends Component {
         });
       })
       .catch(err => {
+        console.log(err);
         this.setState({ err: true });
       });
   }

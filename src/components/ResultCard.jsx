@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "@reach/router";
 import image from "../marvel-image.jpeg";
-import LoadingSymbol from "./LoadingSymbol";
 
 export default function ResultCard({ result, category }) {
-  if (!result) return <LoadingSymbol />;
   return (
     <div className="col s12 m6 l3">
       <div className="card">

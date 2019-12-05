@@ -29,7 +29,8 @@ export const fecthResults = (category, name, orderBy) => {
     );
 };
 
-export const fetchCharacterResult = (category, name) => {
+export const fetchSingleResult = (category, name) => {
+  console.log("hello");
   return axios
     .get(`${base}/${category}?nameStartsWith=${name}&ts=${ts}&apikey=${apiKey}`)
     .then(
@@ -38,10 +39,17 @@ export const fetchCharacterResult = (category, name) => {
           data: { results }
         }
       }) => {
+        // if (!results.length) {
+        //   return results;
+        // }
+        console.log(results, "RESULTS");
         const [result] = results;
+        console.log(result, "RESULT");
+
         const formattedResult = helper.formatResultImage(result);
         const finalResult = helper.formatResultName(formattedResult);
         return finalResult;
       }
-    );
+    )
+    .catch(console.log);
 };

@@ -39,7 +39,8 @@ export default class Main extends Component {
               notValid: false,
               searchEntry: name,
               pageCount: Math.ceil(results.length / this.state.perPage),
-              sortByVisible: true
+              sortByVisible: true,
+              isLoading: true
             },
             () => this.setElementsForCurrentPage()
           );
@@ -53,7 +54,7 @@ export default class Main extends Component {
   setElementsForCurrentPage = () => {
     const { perPage, offset, results } = this.state;
     const elements = results.slice(offset, offset + perPage);
-    this.setState({ elements });
+    this.setState({ elements, isLoading: false });
   };
 
   handlePageClick = data => {
@@ -69,10 +70,6 @@ export default class Main extends Component {
     const { results } = this.state;
     let sortedResults;
     if (sort_by === "name") {
-      // sortedResults = this.sortResultsAlphabetically(results);
-      // this.setState({ results: sortedResults }, () =>
-      //   this.setElementsForCurrentPage()
-      // );
       this.sortResultsAlphabetically();
     } else {
       sortedResults = results.sort((a, b) => {
@@ -85,11 +82,6 @@ export default class Main extends Component {
   };
 
   sortResultsAlphabetically = () => {
-    // return arr.sort((a, b) => {
-    //   if (a.name > b.name) return -1;
-    //   else if (b.name > a.name) return 1;
-    //   else return 0;
-    // });
     const { searchEntry, category } = this.state;
     const orderBy = "-name";
     api
@@ -123,7 +115,8 @@ export default class Main extends Component {
       pageCount,
       currentPage,
       elements,
-      sortByVisible
+      sortByVisible,
+      isLoading
     } = this.state;
     const { category } = this.props;
 
@@ -138,6 +131,7 @@ export default class Main extends Component {
             results={elements}
             searchEntry={searchEntry}
             category={category}
+            isLoading={isLoading}
           />
           <Pagination
             pageCount={pageCount}
@@ -158,6 +152,7 @@ export default class Main extends Component {
             results={results}
             searchEntry={searchEntry}
             category={category}
+            isLoading={isLoading}
           />
         )}
         {searchEntry && <BackButton />}
