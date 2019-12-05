@@ -9,7 +9,6 @@ const base = "http://gateway.marvel.com/v1/public";
 const ts = "12345";
 
 export const fecthResults = (category, name, orderBy) => {
-  console.log(orderBy, "orderby, api");
   return axios
     .get(
       `${base}/${category}?nameStartsWith=${name}&limit=100&ts=${ts}&apikey=${apiKey}`,

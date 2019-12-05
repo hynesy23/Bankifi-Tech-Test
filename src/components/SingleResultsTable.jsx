@@ -61,7 +61,7 @@ export default function CharacterResultsTable({ result }) {
             </tr>
             <tr>
               {result.firstName ? (
-                <p>Popular Stories {result.name} has Contributed to:</p>
+                <td>Popular Stories {result.name} has Contributed to:</td>
               ) : (
                 <td>Popular Stories {result.name} has appareared in:</td>
               )}

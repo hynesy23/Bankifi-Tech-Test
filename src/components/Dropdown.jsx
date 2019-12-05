@@ -13,7 +13,7 @@ export default function Dropdown({ getCategory }) {
       <div className="row">
         <section className="input-field col s4 offset-s4">
           <label>
-            Search for Character or Creator?
+            Search for Character or Creator
             <select className="browser-default" onChange={handleChange}>
               <option value="Choose">Please choose</option>
               <option value="characters">Character</option>

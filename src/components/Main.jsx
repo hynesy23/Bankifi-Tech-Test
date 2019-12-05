@@ -91,7 +91,6 @@ export default class Main extends Component {
     //   else return 0;
     // });
     const { searchEntry, category } = this.state;
-    console.log(searchEntry, category, "name and category");
     const orderBy = "-name";
     api
       .fecthResults(category, searchEntry, orderBy)
@@ -99,7 +98,6 @@ export default class Main extends Component {
         if (!results.length) {
           this.setState({ notValid: true });
         } else {
-          console.log(results, "RESULTS FROM MAIN");
           this.setState(
             {
               results,

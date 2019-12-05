@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "@reach/router";
 
 export default function Error({ error }) {
-  console.log(error, "error log");
   return (
     <>
       {error === "invalid" ? (

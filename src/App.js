@@ -6,7 +6,7 @@ import Main from "./components/Main";
 import SingleResult from "./components/SingleResult";
 import ContinueButton from "./components/ContinueButton";
 import Dropdown from "./components/Dropdown";
-import Error from "../src/components/Error";
+import Error from "./components/Error";
 
 class App extends Component {
   state = {
