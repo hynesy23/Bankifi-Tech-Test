@@ -69,10 +69,11 @@ export default class Main extends Component {
     const { results } = this.state;
     let sortedResults;
     if (sort_by === "name") {
-      sortedResults = this.sortResultsAlphabetically(results);
-      this.setState({ results: sortedResults }, () =>
-        this.setElementsForCurrentPage()
-      );
+      // sortedResults = this.sortResultsAlphabetically(results);
+      // this.setState({ results: sortedResults }, () =>
+      //   this.setElementsForCurrentPage()
+      // );
+      this.sortResultsAlphabetically();
     } else {
       sortedResults = results.sort((a, b) => {
         return b[sort_by].available - a[sort_by].available;
@@ -83,12 +84,37 @@ export default class Main extends Component {
     }
   };
 
-  sortResultsAlphabetically = arr => {
-    return arr.sort((a, b) => {
-      if (a.name > b.name) return -1;
-      else if (b.name > a.name) return 1;
-      else return 0;
-    });
+  sortResultsAlphabetically = () => {
+    // return arr.sort((a, b) => {
+    //   if (a.name > b.name) return -1;
+    //   else if (b.name > a.name) return 1;
+    //   else return 0;
+    // });
+    const { searchEntry, category } = this.state;
+    console.log(searchEntry, category, "name and category");
+    const orderBy = "-name";
+    api
+      .fecthResults(category, searchEntry, orderBy)
+      .then(results => {
+        if (!results.length) {
+          this.setState({ notValid: true });
+        } else {
+          console.log(results, "RESULTS FROM MAIN");
+          this.setState(
+            {
+              results,
+              category,
+              notValid: false,
+              pageCount: Math.ceil(results.length / this.state.perPage),
+              sortByVisible: true
+            },
+            () => this.setElementsForCurrentPage()
+          );
+        }
+      })
+      .catch(err => {
+        this.setState({ err: true });
+      });
   };
 
   render() {
