@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { formatCreatorResults, formatResultImage } from "./utils/helpers";
+import {
+  formatCreatorResults,
+  formatResultImage,
+  formatResultName
+} from "./utils/helpers";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
@@ -121,6 +125,29 @@ describe("formatResultImage", () => {
       thumbnail: {
         path: "https://liverpoolfc/images/i_am_an_image"
       }
+    };
+    expect(actualResult).toEqual(expectedResult);
+  });
+});
+
+describe("formatResultName", () => {
+  it("Returns empty object if passed empty object", () => {
+    const input = {};
+    const actualResult = formatResultName(input);
+    const expectedResult = {};
+    expect(actualResult).toEqual(expectedResult);
+  });
+  it('Takes an object with key "fullName" and changes key to "name"', () => {
+    const input = {
+      id: 203,
+      fullName: "Johnson",
+      thumbnail: "none"
+    };
+    const actualResult = formatResultName(input);
+    const expectedResult = {
+      id: 203,
+      name: "Johnson",
+      thumbnail: "none"
     };
     expect(actualResult).toEqual(expectedResult);
   });

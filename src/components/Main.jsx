@@ -20,28 +20,34 @@ export default class Main extends Component {
     perPage: 20,
     pageCount: 0,
     isLoading: true,
-    sortByVisible: false
+    sortByVisible: false,
+    err: false
   };
 
   getResults = name => {
     const { category } = this.props;
-    api.fecthResults(category, name).then(results => {
-      if (!results.length) {
-        this.setState({ notValid: true });
-      } else {
-        this.setState(
-          {
-            results,
-            category,
-            notValid: false,
-            searchEntry: name,
-            pageCount: Math.ceil(results.length / this.state.perPage),
-            sortByVisible: true
-          },
-          () => this.setElementsForCurrentPage()
-        );
-      }
-    });
+    api
+      .fecthResults(category, name)
+      .then(results => {
+        if (!results.length) {
+          this.setState({ notValid: true });
+        } else {
+          this.setState(
+            {
+              results,
+              category,
+              notValid: false,
+              searchEntry: name,
+              pageCount: Math.ceil(results.length / this.state.perPage),
+              sortByVisible: true
+            },
+            () => this.setElementsForCurrentPage()
+          );
+        }
+      })
+      .catch(err => {
+        this.setState({ err: true });
+      });
   };
 
   setElementsForCurrentPage = () => {
@@ -60,16 +66,10 @@ export default class Main extends Component {
   };
 
   sortResults = sort_by => {
-    console.log(sort_by, "sort by");
     const { results } = this.state;
-    console.log(results, "RESULTS");
     let sortedResults;
     if (sort_by === "name") {
-      sortedResults = results.sort((a, b) => {
-        if (a.name > b.name) return -1;
-        else if (b.name > a.name) return 1;
-        else return 0;
-      });
+      sortedResults = this.sortResultsAlphabetically(results);
       this.setState({ results: sortedResults }, () =>
         this.setElementsForCurrentPage()
       );
@@ -83,7 +83,13 @@ export default class Main extends Component {
     }
   };
 
-  sortResultsAlphabetically = () => {};
+  sortResultsAlphabetically = arr => {
+    return arr.sort((a, b) => {
+      if (a.name > b.name) return -1;
+      else if (b.name > a.name) return 1;
+      else return 0;
+    });
+  };
 
   render() {
     const {

@@ -25,8 +25,7 @@ export const fecthResults = (category, name) => {
         }
         return results;
       }
-    )
-    .catch(console.log);
+    );
 };
 
 export const fetchCharacterResult = (category, name) => {
@@ -42,8 +41,7 @@ export const fetchCharacterResult = (category, name) => {
         const formattedResult = helper.formatResultImage(result);
         return formattedResult;
       }
-    )
-    .catch(console.log);
+    );
 };
 
 export const fetchCreatorResult = (category, name) => {
@@ -57,8 +55,8 @@ export const fetchCreatorResult = (category, name) => {
       }) => {
         const [result] = results;
         const formattedResult = helper.formatResultImage(result);
-        return formattedResult;
+        const finalResult = helper.formatResultName(formattedResult);
+        return finalResult;
       }
-    )
-    .catch(console.log);
+    );
 };

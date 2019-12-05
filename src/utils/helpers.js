@@ -21,3 +21,14 @@ export const formatResultImage = result => {
 
   return result;
 };
+
+export const formatResultName = result => {
+  if (!Object.keys(result).length) {
+    return result;
+  }
+
+  result.name = result.fullName;
+  delete result.fullName;
+
+  return result;
+};
