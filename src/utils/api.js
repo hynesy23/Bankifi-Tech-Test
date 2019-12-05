@@ -30,22 +30,6 @@ export const fecthResults = (category, name) => {
 
 export const fetchCharacterResult = (category, name) => {
   return axios
-    .get(`${base}/${category}?name=${name}&ts=${ts}&apikey=${apiKey}`)
-    .then(
-      ({
-        data: {
-          data: { results }
-        }
-      }) => {
-        const [result] = results;
-        const formattedResult = helper.formatResultImage(result);
-        return formattedResult;
-      }
-    );
-};
-
-export const fetchCreatorResult = (category, name) => {
-  return axios
     .get(`${base}/${category}?nameStartsWith=${name}&ts=${ts}&apikey=${apiKey}`)
     .then(
       ({

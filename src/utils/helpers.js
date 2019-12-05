@@ -27,8 +27,10 @@ export const formatResultName = result => {
     return result;
   }
 
-  result.name = result.fullName;
-  delete result.fullName;
+  if (result.fullName) {
+    result.name = result.fullName;
+    delete result.fullName;
+  }
 
   return result;
 };
