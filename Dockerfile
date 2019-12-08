@@ -1,5 +1,5 @@
-FROM node:alpine
-WORKDIR '/app'
+FROM node:latest
+WORKDIR 'usr/src/app'
 
 COPY package.json .
 RUN npm install 

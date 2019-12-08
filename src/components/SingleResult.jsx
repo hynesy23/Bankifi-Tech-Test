@@ -20,7 +20,6 @@ export default class SingleResult extends Component {
         if (!result) {
           this.setState({ err: true });
         }
-        console.log(result, "RESULT FROM SINGLERESULT");
         this.setState({
           result,
           currentCategory: category,
@@ -35,8 +34,9 @@ export default class SingleResult extends Component {
 
   render() {
     const { result, isLoading, err } = this.state;
+    const { category } = this.props;
     if (isLoading) return <LoadingSymbol />;
     if (err) return <Error />;
-    return <SingleResultsTable result={result} />;
+    return <SingleResultsTable result={result} category={category} />;
   }
 }

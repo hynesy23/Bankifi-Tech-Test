@@ -5,7 +5,8 @@ export default function Dropdown({ getCategory }) {
   const handleChange = event => {
     const category = event.target.value;
     getCategory(category);
-    navigate("/main");
+    // navigate("/main");
+    navigate(`/${category}`);
   };
 
   return (

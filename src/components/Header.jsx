@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <nav>
       <Link to="/">
-        <h1 className="brand logo red">Marvelpedia</h1>
+        <h1 className="brand logo red">MARVELpedia</h1>
       </Link>
     </nav>
   );

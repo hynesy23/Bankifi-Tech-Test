@@ -1,10 +1,12 @@
 import React from "react";
 import image from "../marvel-image.jpeg";
+import BackButton from "./BackButton";
 
-export default function CharacterResultsTable({ result }) {
+export default function CharacterResultsTable({ result, category }) {
   if (result) {
     return (
       <>
+        <BackButton category={category} />
         {result.thumbnail.path ? (
           <img
             src={`${result.thumbnail.path}/landscape_incredible.jpg`}

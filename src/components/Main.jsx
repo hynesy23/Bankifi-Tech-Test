@@ -3,7 +3,7 @@ import * as api from "../utils/api";
 import InputField from "./InputField";
 import ResultsList from "./ResultsList";
 import Pagination from "./Pagination";
-import BackButton from "./BackButton";
+import HomeButton from "./HomeButton";
 import Error from "./Error";
 import SortResults from "./SortResults";
 
@@ -19,7 +19,7 @@ export default class Main extends Component {
     currentPage: 0,
     perPage: 20,
     pageCount: 0,
-    isLoading: true,
+    isLoading: false,
     sortByVisible: false,
     err: false
   };
@@ -125,7 +125,11 @@ export default class Main extends Component {
     if (pageCount > 1) {
       return (
         <>
-          <InputField getResults={this.getResults} category={category} />
+          <InputField
+            handleLoading={this.handleLoading}
+            getResults={this.getResults}
+            category={category}
+          />
           {sortByVisible && <SortResults sortResults={this.sortResults} />}
           <ResultsList
             results={elements}
@@ -138,7 +142,7 @@ export default class Main extends Component {
             currentPage={currentPage}
             handlePageClick={this.handlePageClick}
           />
-          <BackButton />
+          <HomeButton />
         </>
       );
     }
@@ -155,7 +159,7 @@ export default class Main extends Component {
             isLoading={isLoading}
           />
         )}
-        {searchEntry && <BackButton />}
+        {searchEntry && <HomeButton />}
       </>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
+import LoadingSymbol from "./LoadingSymbol";
 
 export default class InputField extends Component {
   state = {
@@ -14,8 +15,10 @@ export default class InputField extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { name } = this.state;
+    const { category } = this.props;
     this.props.getResults(name);
     this.setState({ name: "" });
+    navigate(`/${category}/search/${name}`);
   };
 
   render() {

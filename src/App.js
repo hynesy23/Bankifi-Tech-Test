@@ -33,7 +33,7 @@ class App extends Component {
           <ContinueButton path="/" setContinue={this.setContinue} />
           <Dropdown path="/choose_category" getCategory={this.getCategory} />
           <Main
-            path="/main"
+            path="/:category/*"
             getCategory={this.getCategory}
             category={category}
           />

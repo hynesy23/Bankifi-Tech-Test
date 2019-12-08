@@ -1,10 +1,13 @@
 import React from "react";
 import { navigate } from "@reach/router";
 
-export default function BackButton() {
+export default function BackButton({ category, searchEntry }) {
   const setRoute = () => {
-    navigate("/");
+    navigate(`/${category}`);
   };
-
-  return <button onClick={setRoute}>Back to Welcome Page</button>;
+  return (
+    <button className="back_btn" onClick={setRoute}>
+      Go Back
+    </button>
+  );
 }
