@@ -21,8 +21,25 @@
 }
 
 .back_btn {
+  display: flex;
+  flex-direction: column;
   background-color: red;
   color: white;
   border: none;
   padding: 10px 15px 10px 15px;
+}
+
+.search_btn:hover {
+  cursor: pointer;
+  color: rgb(247, 162, 162);
+}
+
+.back_btn:hover {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(199, 3, 3);
+  color: white;
+  border: none;
+  padding: 10px 15px 10px 15px;
+  cursor: pointer;
 }

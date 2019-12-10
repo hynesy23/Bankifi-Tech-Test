@@ -37,7 +37,7 @@ export default class InputField extends Component {
                   required
                 />
               </div>
-              <button>Search</button>
+              <button className="search_btn">Search</button>
             </form>
             <p>
               Or, go back to your{" "}

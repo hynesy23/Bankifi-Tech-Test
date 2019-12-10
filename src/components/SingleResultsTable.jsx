@@ -6,7 +6,6 @@ export default function CharacterResultsTable({ result, category }) {
   if (result) {
     return (
       <>
-        <BackButton category={category} />
         {result.thumbnail.path ? (
           <img
             src={`${result.thumbnail.path}/landscape_incredible.jpg`}
@@ -20,9 +19,9 @@ export default function CharacterResultsTable({ result, category }) {
             >
               <img src={image} className="gen_image" alt="Marvel logo" />
             </a>
-            )
           </>
         )}
+        <BackButton category={category} />
         <h2>{result.name}</h2>
         <table>
           <thead>
