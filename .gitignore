@@ -25,3 +25,6 @@ yarn-error.log*
 # apikey
 .env
 apikey.js
+
+# Local Netlify folder
+.netlify

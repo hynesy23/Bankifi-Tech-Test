@@ -2,7 +2,7 @@ import axios from "axios";
 import * as helper from "./helpers";
 import apiKey from "../apikey";
 
-const base = "http://gateway.marvel.com/v1/public";
+const base = "https://gateway.marvel.com/v1/public";
 
 const ts = "12345";
 
