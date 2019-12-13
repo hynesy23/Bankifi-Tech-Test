@@ -8,6 +8,7 @@ export default function Pagination({
 }) {
   return (
     <ReactPaginate
+      className="paginate"
       previousLabel={"← Previous"}
       nextLabel={"Next →"}
       breakLabel={<span className="gap">...</span>}

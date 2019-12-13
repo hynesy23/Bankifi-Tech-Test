@@ -1,7 +1,7 @@
 import React from "react";
 import { navigate } from "@reach/router";
 
-export default function BackButton({ category, searchEntry }) {
+export default function BackButton({ category }) {
   const setRoute = () => {
     navigate(`/${category}`);
   };

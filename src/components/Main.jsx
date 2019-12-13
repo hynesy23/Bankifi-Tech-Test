@@ -12,6 +12,7 @@ export default class Main extends Component {
     results: [],
     elements: [],
     category: "",
+    categoryArray: ["characters", "creators"],
     searchEntry: "",
     dropdownVisible: true,
     notValid: false,
@@ -116,11 +117,13 @@ export default class Main extends Component {
       currentPage,
       elements,
       sortByVisible,
-      isLoading
+      isLoading,
+      categoryArray
     } = this.state;
     const { category } = this.props;
 
-    if (!category) return <Error error="category" />;
+    if (!category || !categoryArray.includes(category))
+      return <Error error="category" />;
 
     if (pageCount > 1) {
       return (

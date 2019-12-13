@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link, navigate } from "@reach/router";
-import LoadingSymbol from "./LoadingSymbol";
 
 export default class InputField extends Component {
   state = {
