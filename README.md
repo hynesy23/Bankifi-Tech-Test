@@ -1,4 +1,4 @@
-# Bankifi Tech Test
+# Marvelpedia
 
 This is a single page application builti with Reactjs. It is a search engine app, which makes RESTful GET requests to the Marvel Developer API https://developer.marvel.com/. You can search for either characters or creators. Requests are paginated and display is reponsive.
 
