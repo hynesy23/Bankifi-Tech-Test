@@ -47,3 +47,7 @@
 .paginate:hover {
   cursor: pointer;
 }
+
+.main_err {
+  font-size: 20px;
+}
